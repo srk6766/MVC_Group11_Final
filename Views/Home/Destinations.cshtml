@@ -1,7 +1,7 @@
 ﻿@{
-    Layout = null;
+    Layout = null; // Or your layout here
+    var backgroundUrl = Url.Content("~/img/background.png");
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +10,15 @@
     <title>Explore India | Destinations</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="@Url.Content("~/css/styles.css")">
+    <title>Explore India!</title>
     <style>
         body {
+            background-image: url('@backgroundUrl');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
+        /* Add other styles as needed */
     </style>
 </head>
 <body id="destinations-page">
@@ -76,5 +79,6 @@
     </script>
     <script src="@Url.Content("~/js/destinations.js")"></script> <!-- Make sure this file has your states data -->
     <script src="@Url.Content("~/js/script.js")"></script>
+    /*added variable here for the destination.js content*/
 </body>
 </html>
