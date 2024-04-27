@@ -1,4 +1,4 @@
-let reviews = []; // Holds all reviews
+﻿let reviews = []; // Holds all reviews
 
 // Dynamically update the places dropdown based on selected state
 function updatePlacesDropdown() {
@@ -53,15 +53,90 @@ function updateReviewList() {
     reviewsList.innerHTML = ''; // Clear current list
     reviews.forEach(function (review) {
         const listItem = document.createElement('li');
-        listItem.textContent = `${review.userName} (${review.state}, ${review.place}): ${review.reviewText}`;
+        listItem.classList.add('media', 'mb-4');
+
+        const reviewContent = document.createElement('div');
+        reviewContent.classList.add('media-body', 'ml-3');
+
+        const reviewHeader = document.createElement('h5');
+        reviewHeader.classList.add('mt-0', 'mb-1');
+        reviewHeader.textContent = review.userName;
+
+        const reviewDetails = document.createElement('p');
+        reviewDetails.classList.add('mb-1');
+        reviewDetails.textContent = `(${review.state}, ${review.place}): ${review.reviewText}`;
+
+        const reviewRating = document.createElement('div');
+        reviewRating.classList.add('mb-1');
+        for (let i = 0; i < review.rating; i++) {
+            const star = document.createElement('span');
+            star.textContent = '★';
+            reviewRating.appendChild(star);
+        }
+        for (let i = review.rating; i < 5; i++) {
+            const star = document.createElement('span');
+            star.textContent = '☆';
+            reviewRating.appendChild(star);
+        }
+
+        reviewContent.appendChild(reviewHeader);
+        reviewContent.appendChild(reviewDetails);
+        reviewContent.appendChild(reviewRating);
+
+        listItem.appendChild(reviewContent);
+
+        // Add edit and delete buttons
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('btn', 'btn-primary', 'mr-2');
+        editButton.onclick = function () {
+            editReview(review.id);
+        };
+        listItem.appendChild(editButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('btn', 'btn-danger');
+        deleteButton.onclick = function () {
+            deleteReview(review.id);
+        };
+        listItem.appendChild(deleteButton);
+
         reviewsList.appendChild(listItem);
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    var stateSelect = document.getElementById('stateSelect');
-    if (stateSelect) {
-        stateSelect.addEventListener('change', updatePlacesDropdown);
+// Function to edit a review
+function editReview(id) {
+    const reviewIndex = reviews.findIndex(review => review.id === id);
+    if (reviewIndex !== -1) {
+        const updatedName = prompt('Enter updated name:', reviews[reviewIndex].userName);
+        const updatedReview = prompt('Enter updated review:', reviews[reviewIndex].reviewText);
+        const updatedRating = prompt('Enter updated rating (1-5):', reviews[reviewIndex].rating);
+
+        if (updatedName && updatedReview && updatedRating) {
+            reviews[reviewIndex].userName = updatedName;
+            reviews[reviewIndex].reviewText = updatedReview;
+            reviews[reviewIndex].rating = updatedRating;
+            updateReviewList();
+        }
     }
-    updatePlacesDropdown(); // Update on load in case there's a default state selected
-});
+}
+
+// Function to delete a review
+function deleteReview(id) {
+    const reviewIndex = reviews.findIndex(review => review.id === id);
+    if (reviewIndex !== -1) {
+        reviews.splice(reviewIndex, 1);
+        updateReviewList();
+    }
+}
+
+// Function to clear input fields
+function clearInputFields() {
+    document.getElementById('userName').value = '';
+    document.getElementById('stateSelect').value = '';
+    document.getElementById('placeSelect').value = '';
+    document.getElementById('userReview').value = '';
+    document.getElementById('starRating').value = '';
+}
