@@ -1,0 +1,280 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/styles.css")">
+    <style>
+        #mypieChart {
+            max-width: 700px; /* Adjust the width as needed */
+            height: 1200px;
+            margin: auto; /* Center the chart */
+        }
+        /* Other styles */
+    </style>
+    <style>
+        #myChart {
+            max-width: 700px; /* Adjust the width as needed */
+            margin: auto; /* Center the chart */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="bg-primary-transparent text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 class="mb-0">Explore India</h1>
+                </div>
+                <div class="col-md-8 text-right">
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("Destinations", "Home")'">Destinations</button>
+                    <button class="btn btn-light mr-2" onclick="window.location.href='@Url.Action("Reviews", "Home")'">Reviews</button>
+                    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("About", "Home")'">About Us</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="container mt-5">
+            <h2 class="text-center mb-4">Tourism Attraction Distribution</h2>
+            <canvas id="myChart"></canvas>
+        </section>
+        <section class="container mt-5">
+            <h2 class="text-center mb-4">Top Attractions Ratings</h2>
+            <canvas id="mypieChart"></canvas>
+        </section>
+        <main class="my-4">
+        </section>
+        <div class="container">
+            <h2>Attractions Comparison Chart</h2>
+            <canvas id="comparisonChart"></canvas>
+        </div>
+        </main>
+        </section>
+        <section id="teamMembers" class="container">
+            <h2 class="text-center mb-4">Our Team</h2>
+            <div class="row">
+                <!-- Team Members -->
+                <div class="col-md-3 team-member">
+                    <img src="@Url.Content("~/img/purna.jpg")" alt="Purna Chandra Shekar Reddy Gosala" class="img-fluid">
+                    <h5>Purna Chandra Shekar Reddy Gosala</h5>
+                    <p>Developed the JavaScript functionality that dynamically populates state and place selections based on data.</p>
+                </div>
+                <div class="col-md-3 team-member">
+                    <img src="@Url.Content("~/img/shyam.jpg")" alt="Shyam Rishi Kashyap Sai Kalaparthy" class="img-fluid">
+                    <h5>Shyam Rishi Kashyap Sai Kalaparthy</h5>
+                    <p>Designed the layout of the website, focusing on the HTML structure and navigation.</p>
+                </div>
+                <div class="col-md-3 team-member">
+                    <img src="@Url.Content("~/img/advith.jpg")" alt="Advith Reddy Kunda" class="img-fluid">
+                    <h5>Advith Reddy Kunda</h5>
+                    <p>Integrated Bootstrap for responsive design and added custom styles to match the theme of exploring India.</p>
+                </div>
+                <div class="col-md-3 team-member">
+                    <img src="@Url.Content("~/img/pragyna.jpg")" alt="Pragnya Devi" class="img-fluid">
+                    <h5>Pragnya Devi</h5>
+                    <p>Handled the JavaScript logic for interactive elements and ensured smooth UI interactions.</p>
+            </div>
+        </section>
+        <section id="additionalInsights" class="container mt-5">
+            <h2 class="text-center mb-4">Database</h2>
+            <div class="row">
+                <figure>
+                    <img src="@Url.Content("~/img/ERD.png")" alt="Entity Relationship Diagram" class="img-fluid">
+                    <figcaption>Entity Relationship Diagram</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section id="imagesSection" class="container mt-5">
+            <h2 class="text-center mb-4">GitHub Commits</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <img src="@Url.Content("~/img/git1.png")" alt="GitHub Commits" class="img-fluid">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <img src="@Url.Content("~/img/git2.png")" alt="GitHub Commits" class="img-fluid">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <img src="@Url.Content("~/img/git3.png")" alt="GitHub Commits" class="img-fluid">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <img src="@Url.Content("~/img/git4.png")" alt="GitHub Commits" class="img-fluid">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <img src="@Url.Content("~/img/git5.png")" alt="GitHub Commits" class="img-fluid">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <img src="@Url.Content("~/img/git6.png")" alt="GitHub Commits" class="img-fluid">
+                </div>
+            </div>
+            <</section>
+       
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2024 Explore India</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/js/destinations.js")"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const historicalSitesCount = 33;
+            const naturalLandmarksCount = 33;
+            const culturalExperiencesCount = 27;
+
+            const data = {
+                labels: ["Historical Sites", "Natural Landmarks", "Cultural Experiences/Adventure Activities"],
+                datasets: [
+                    {
+                        label: "Tourism Attractions",
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                        data: [historicalSitesCount, naturalLandmarksCount, culturalExperiencesCount]
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Tourism Attractions in India'
+                        }
+                    },
+                    responsive: true
+                }
+            };
+
+            new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const data = {
+                labels: ["Taj Mahal, Agra", "Golden Temple, Amritsar", "Varanasi Ghats, Varanasi", "Hampi, Bellary", "Kerala Backwaters, Alappuzha",
+                    "Ajanta and Ellora Caves, Aurangabad", "Darjeeling Himalayan Railway, Darjeeling", "Khajuraho Temples, Chhatarpur",
+                    "Mehrangarh Fort, Jodhpur", "Goa Beaches, Goa", "Meenakshi Amman Temple, Madurai", "Leh Ladakh, Ladakh",
+                    "Gir National Park, Junagadh", "Sundarbans National Park, Sundarbans", "Jaisalmer, Jaisalmer", "Sikkim Himalayas, Sikkim",
+                    "Jim Corbett National Park, Nainital", "Ajmer Sharif Dargah, Ajmer", "Munnar, Idukki"],
+                datasets: [{
+                    label: "Rating",
+                    backgroundColor: '#36A2EB',
+                    data: [7, 4, 9, 2, 8, 5, 3, 6, 7, 2, 9, 1, 8, 5, 3, 6, 7, 4, 9]
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Top Attractions Ratings'
+                        }
+                    },
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Attractions'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Rating'
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(document.getElementById('mypieChart'), config);
+        });
+    </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const comparisonData = {
+                labels: ["Andhra Pradesh", "Rajasthan", "Telangana", "Karnataka", "Tamil Nadu",
+                         "Maharashtra", "Madhya Pradesh", "Chhattisgarh", "Odisha", "West Bengal",
+                         "Jharkhand", "Gujarat", "Punjab", "Jammu and Kashmir", "Ladakh",
+                         "Himachal Pradesh", "Uttarakhand", "Haryana", "New Delhi", "Uttar Pradesh",
+                         "Goa", "Bihar", "Sikkim", "Assam", "Arunachal Pradesh", "Nagaland",
+                         "Manipur", "Mizoram", "Tripura", "Meghalaya", "Kerala"],
+                datasets: [
+                    {
+                        label: "Historical Significance",
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        fill: false,
+                        data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 10) + 1)
+                    },
+                    {
+                        label: "Popularity among Tourists",
+                        borderColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        fill: false,
+                        data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 10) + 1)
+                    },
+                    {
+                        label: "Accessibility",
+                        borderColor: 'rgb(255, 206, 86)',
+                        backgroundColor: 'rgba(255, 206, 86, 0.5)',
+                        fill: false,
+                        data: Array.from({ length: 31 }, () => Math.floor(Math.random() * 10) + 1)
+                    }
+                ]
+            };
+
+            const comparisonConfig = {
+                type: 'line',
+                data: comparisonData,
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Attractions Comparison Chart'
+                        }
+                    },
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Criteria Rating'
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(
+                document.getElementById('comparisonChart'),
+                comparisonConfig
+            );
+        });
+    </script>
+</body>
+</html>

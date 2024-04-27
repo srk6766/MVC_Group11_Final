@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore India | Travel Recommendations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/css/styles.css")">
+</head>
+<body>
+    <header class="bg-primary-transparent text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 class="mb-0">Explore India</h1>
+                </div>
+                <div class="col-md-8 text-right">
+                    <button class="btn btn-primary mr-2" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("Destinations", "Home")'">Destinations</button>
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("Reviews", "Home")'">Reviews</button>
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("About", "Home")'">About Us</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="homepage" class="container">
+            <div class="jumbotron">
+                <h2 class="display-4 text-center mb-4">Welcome to Explore India!</h2>
+                <p class="lead text-center">Your ultimate guide to discovering India’s stunning landscapes, rich culture, and vibrant heritage.</p>
+                <div class="video-section">
+                    <h3>Explore India Video</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <!-- Replace '_KCzjzyrbyQ' with the ID of your YouTube video -->
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_KCzjzyrbyQ" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="introduction-section">
+                        <h3>Brief Overview</h3>
+                        <p>Explore India is your go-to source for curated travel recommendations across India's diverse states. We aim to showcase the unique beauty and cultural richness of each region, from the snow-capped Himalayas to the serene waters of the South.</p>
+                        <h3>Mission Statement</h3>
+                        <p>"At Explore India, we strive to bring you closer to the heart of India with comprehensive travel guides, from the snow-capped Himalayas to the serene waters of the South."</p>
+                        <h3>Why Explore India?</h3>
+                        <ul>
+                            <li><strong>Cultural Richness:</strong> Discover India's diverse cultural heritage, including festivals, local cuisine, and traditional arts.</li>
+                            <li><strong>Natural Beauty:</strong> Experience the varied landscapes, from beaches and deserts to jungles and mountains.</li>
+                            <li><strong>Historical Significance:</strong> Explore the abundance of historical sites, from ancient temples to colonial architecture, each telling a part of India’s storied past.</li>
+                        </ul>
+                    </div>
+                    <div class="featured-destinations">
+                        <h3>Featured Destinations</h3>
+                        <div class="rotating-feature">
+                            <h4>Rajasthan’s Palaces</h4>
+                            <p>Discover the grandeur of Rajasthan's palaces, a testament to the state's royal history.</p>
+                        </div>
+                        <div class="rotating-feature">
+                            <h4>Goa’s Beaches</h4>
+                            <p>Relax on the pristine beaches of Goa, known for their golden sands and vibrant nightlife.</p>
+                        </div>
+                        <div class="rotating-feature">
+                            <h4>Darjeeling's Tea Gardens</h4>
+                            <p>Experience the beauty of Darjeeling's tea gardens, surrounded by lush greenery and breathtaking views.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2024 Explore India</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/umd/popper.min.js"></script>
+    <script>
+        if (typeof Popper === 'undefined') {
+            var script = document.createElement('script');
+            script.src = '@Url.Content("~/scripts/popper.min.js")';
+            document.head.appendChild(script);
+        }
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

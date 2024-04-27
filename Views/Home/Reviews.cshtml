@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/styles.css")">
+    <style>
+        .transparent-black {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        #userReview {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        body {
+            background-color: beige;
+        }
+
+        .review-block {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary-transparent text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h1 class="mb-0">Explore India</h1>
+                </div>
+                <div class="col-md-8 text-right">
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
+                    <button class="btn btn-light" onclick="window.location.href='@Url.Action("Destinations", "Home")'">Destinations</button>
+                    <a href="@Url.Action("Reviews", "Home")" class="btn btn-primary">Reviews</a>
+                    <a href="@Url.Action("About", "Home")" class="btn btn-light">About Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-fluid">
+            <section id="addReviewForm" class="card p-4 transparent-black">
+                <h2 class="text-center mb-4" style="background-color: rgba(0, 0, 0, 0.4); color: #f2f2f2;">Add a Review</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="userName" style="color: #000;">Name:</label>
+                        <input type="text" id="userName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stateSelect" style="color: #000;">State:</label>
+                        <select id="stateSelect" class="form-control" required onchange="updatePlacesDropdown()">
+                            <option value="">Select State</option>
+                            <!-- Options will be dynamically added by the script -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="placeSelect" style="color: #000;">Famous Place:</label>
+                        <select id="placeSelect" class="form-control" required>
+                            <option value="">Select Famous Place</option>
+                            <!-- Options will be dynamically added by the script -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userReview" style="color: #000;">Review:</label>
+                        <textarea id="userReview" class="form-control" rows="6" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="starRating" style="color: #000;">Rating:</label>
+                        <select id="starRating" class="form-control" required>
+                            <option value="">Select Rating</option>
+                            <option value="1">★☆☆☆☆</option>
+                            <option value="2">★★☆☆☆</option>
+                            <option value="3">★★★☆☆</option>
+                            <option value="4">★★★★☆</option>
+                            <option value="5">★★★★★</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" onclick="submitReview()" class="btn btn-primary">Submit Review</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="reviewList" class="card p-4 transparent-black mt-5">
+                <h2 class="text-center mb-4" style="background-color: rgba(0, 0, 0, 0.4); color: #f2f2f2;">Reviews</h2>
+                <div class="review-block">
+                    <ul id="reviews" class="list-unstyled" style="color: black;">
+                        <!-- Individual reviews will be added dynamically here -->
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var baseUrl = '@Url.Content("~/")';
+    </script>
+    <script src="@Url.Content("~/js/destinations.js")"></script> <!-- Load destinations data -->
+    <script src="@Url.Content("~/js/reviews.js")"></script> <!-- Handle reviews -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var stateSelect = document.getElementById('stateSelect');
+            if (!stateSelect) {
+                console.error("State select element not found.");
+                return;
+            }
+
+            // Populate state dropdown with available states from destinations.js
+            famousPlaces.forEach(function (place) {
+                var option = document.createElement("option");
+                option.value = place.state;
+                option.textContent = place.state;
+                stateSelect.appendChild(option);
+            });
+        });
+    </script>
+
+</body>
+</html>
